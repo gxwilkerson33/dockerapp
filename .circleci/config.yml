@@ -17,6 +17,17 @@ jobs:
       - run:
           name: "Say hello"
           command: "echo Hello, World!"
+  build:
+    docker:
+      - image: cimg/base:stable
+    steps:
+      - checkout
+      - run:
+          name: "build docker image"
+          command: "docker build -t gxwilkerson/docker-react -f Dockerfile.dev ."
+      - run:
+          name: "run tests"
+          command: "docker run gxwilkerson/docker-react npm run test -- --coverage"
 
 # Invoke jobs via workflows
 # See: https://circleci.com/docs/2.0/configuration-reference/#workflows
