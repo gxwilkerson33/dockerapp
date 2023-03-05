@@ -19,7 +19,7 @@ jobs:
           command: "echo Hello, World!"
   build:
     docker:
-      - image: cimg/base:stable
+      - image: docker:17.05.0-ce-git
     steps:
       - checkout
       - run:
