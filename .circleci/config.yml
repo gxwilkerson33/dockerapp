@@ -22,6 +22,8 @@ jobs:
       - image: docker:17.05.0-ce-git
     steps:
       - checkout
+      - setup_remote_docker:
+          version: 20.10.14
       - run:
           name: "build docker image"
           command: "docker build -t gxwilkerson/docker-react -f Dockerfile.dev ."
